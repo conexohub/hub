@@ -1,12 +1,12 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Este README.md normalmente documentaria quaisquer etapa necessárias para colocar uma aplicação em funcionamento.
 
 ### What is this repository for? ###
 
 * Quick summary
 * Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* [repo.demo](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
