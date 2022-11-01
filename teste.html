@@ -1,0 +1,82 @@
+
+
+    <body>
+                      
+                            
+                            <div style="background-color:#ffffff">
+    <select id="voz" onclick="javascript:andmak_carregar_voz();" style="margin:20px;text-align:center;max-width:95%;" class="btn-pattern"><option value="">Selecione a Voz</option></select><br />
+<textarea rows="20" style="width:95%;margin:20px;margin-bottom:0px" placeholder="Digite o Texto Aqui" id="texto"></textarea><br />
+<input type="button" onclick="javascript:andmak_falar();" style="margin:20px;margin-top:10px;text-align:center;" class="btn-pattern" value="FALAR AGORA"> <input type="button" onclick="javascript:andmak_cancelar();" style="margin:20px;margin-top:10px;text-align:center;" class="btn-pattern" value="CANCELAR"><center>
+<select id="rate" style="margin-left:20px;text-align:center;max-width:25%;display:inline-block !important;"><option value="1">Velocidade</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+<select id="pitch" style="margin-left:20px;text-align:center;max-width:25%; display:inline-block !important;"><option value="1">Tom</option><option value="0">0</option><option value="0.1">0.1</option><option value="0.2">0.2</option><option value="0.3">0.3</option><option value="0.4">0.4</option><option value="0.5">0.5</option><option value="0.6">0.6</option><option value="0.7">0.7</option><option value="0.8">0.8</option><option value="0.9">0.9</option><option value="1">1</option><option value="1.1">1.1</option><option value="1.2">1.2</option><option value="1.3">1.3</option><option value="1.4">1.4</option><option value="1.5">1.5</option><option value="1.6">1.6</option><option value="1.7">1.7</option><option value="1.8">1.8</option><option value="1.9">1.9</option><option value="2">2</option></select>
+</center>
+</div>
+
+
+
+<!-- HFCM by 99 Robots - Snippet # 3: Fala Texto -->
+<script>
+let synth = window.speechSynthesis;
+let message = new SpeechSynthesisUtterance ();
+let voices = synth.getVoices ();
+
+message.pitch = 1;
+message.volume = 1;    
+message.rate = 1;
+
+function andmak_cancelar(){
+	synth.cancel();
+} 
+function andmak_falar(){    
+
+    message.pitch = document.getElementById("pitch").value;
+    message.rate = document.getElementById("rate").value;
+    
+    var voicess = window.speechSynthesis.getVoices();
+    var voz = document.getElementById("voz").value;
+    
+     for (let voice of voicess)
+    {
+
+        if(voice.name ==voz){
+            
+            message.voice = voice;
+        }
+        
+    }     
+    
+    message.text = document.getElementById("texto").value;
+    speechSynthesis.speak (message);    
+}
+function andmak_carregar_voz(){    
+    var voicess = window.speechSynthesis.getVoices();
+    var voz = document.getElementById("voz");
+    
+    if(voz.length>1) return;
+     for (let voice of voicess)
+    {
+        
+        var opt = document.createElement('option');
+        opt.value = voice.name;
+        opt.innerHTML = voice.name;
+
+        if(voice.name.indexOf("Brazil") != -1 || voice.name.indexOf("Brasil") != -1){
+            
+             if(voice.name.indexOf("Francisca") != -1) opt.selected=true;
+            
+            opt.style.backgroundColor = 'white';
+            opt.style.color = 'black';
+            
+        }
+        voz.appendChild(opt);
+
+    } 
+        
+} 
+</script>
+
+
+
+</body>
+
+</html>
